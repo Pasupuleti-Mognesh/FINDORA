@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report an Item | FINDORA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <canvas id="tubes-canvas"></canvas>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">FINDORA<span>.</span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="browse.html">Browse Items</a>
+      <a href="report.html">Report Item</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html">Login</a>
+      <a class="btn btn-primary" href="register.html">Sign Up</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="eyebrow">Help the campus community</div>
+      <h1 class="page-title">Report an <span class="gradient-text">Item</span></h1>
+      <p>Provide clear details so the right person can identify the item.</p>
+    </section>
+
+    <div class="form-wrap">
+      <form class="form-card" id="reportForm" enctype="multipart/form-data">
+        <h2>Item information</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="type">Listing type</label>
+            <select id="type" name="type" required>
+              <option value="Lost">I lost an item</option>
+              <option value="Found">I found an item</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="Electronics">Electronics</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Documents">Documents</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="title">Item name</label>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              required
+              maxlength="100"
+              placeholder="e.g. Black wireless headphones"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              required
+              placeholder="Where was it lost or found?"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              required
+              maxlength="2000"
+              placeholder="Describe colour, brand, identifying details..."
+            ></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="image">Item image (optional)</label>
+            <input
+              id="image"
+              name="image"
+              type="file"
+              accept="image/*"
+            >
+            <small>Maximum image size: 5 MB.</small>
+          </div>
+        </div>
+
+        <p class="notice">
+          Your report will be saved to the FINDORA database.
+        </p>
+
+        <button class="btn btn-primary" type="submit">
+          Submit Report
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="logo">FINDORA<span>.</span></div>
+    <p>Helping campus belongings find their way home.</p>
+    <small>© 2026 FINDORA. Campus Lost & Found.</small>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

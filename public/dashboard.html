@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | FINDORA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="tubes-canvas"></canvas>
+
+<header class="site-header">
+    <a class="logo" href="index.html">FINDORA<span>.</span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse Items</a>
+        <a href="report.html">Report Item</a>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+    <div class="nav-actions">
+        <a class="btn btn-quiet" href="login.html">Login</a>
+        <a class="btn btn-primary" href="register.html">Sign Up</a>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-intro">
+        <div class="eyebrow">Your FINDORA activity</div>
+        <h1 class="page-title">User <span class="gradient-text">Dashboard</span></h1>
+        <p>Manage your reports and track your submitted claims.</p>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <strong id="myReportCount">0</strong>
+            <span>My Reports</span>
+        </div>
+        <div class="stat-card">
+            <strong id="myClaimCount">0</strong>
+            <span>My Claims</span>
+        </div>
+        <div class="stat-card">
+            <a class="btn btn-primary" href="report.html">＋ New Report</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head"><h2>My Reports</h2></div>
+        <div class="item-grid" id="dashboardItems">
+            <p>Loading your reports...</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head"><h2>My Submitted Claims</h2></div>
+        <div id="myClaims">
+            <p>Loading your claims...</p>
+        </div>
+    </section>
+
+    <p class="notice" id="dashboardNotice">Loading dashboard...</p>
+</main>
+
+<footer class="site-footer">
+    <div class="logo">FINDORA<span>.</span></div>
+    <p>Helping campus belongings find their way home.</p>
+    <small>© 2026 FINDORA. Campus Lost &amp; Found.</small>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

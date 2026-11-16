@@ -1,0 +1,25 @@
+﻿node_modules/
+.env
+.env.*
+!.env.example
+uploads/*
+!uploads/.gitkeep
+!uploads/.gitignore
+
+.DS_Store
+*.log
+*.before_*
+package.json.before-watch-fix
+README-FRONTEND.txt
+
+findora_backup_*/
+findora_repair_backup_*/
+FINDORA_Postman_Run_*/
+FINDORA_FINAL_AUDIT.txt
+
+
+# Local configuration backups
+.gitignore.backup_*
+
+# Local test runner - keep out of production release
+FINDORA_PHASE2_COMPLETE.js
