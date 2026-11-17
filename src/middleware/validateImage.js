@@ -1,5 +1,3 @@
-﻿const fs = require("fs");
-
 function detectImageType(header) {
     if (
         header.length >= 8 &&
@@ -43,23 +41,18 @@ function detectImageType(header) {
     return null;
 }
 
-module.exports = async function validateImage(req, res, next) {
+module.exports = function validateImage(req, res, next) {
     if (!req.file) return next();
 
-    let handle;
-
     try {
-        handle = await fs.promises.open(req.file.path, "r");
+        if (!Buffer.isBuffer(req.file.buffer)) {
+            const error = new Error("Image upload data is missing.");
+            error.code = "INVALID_IMAGE_CONTENT";
+            error.status = 400;
+            return next(error);
+        }
 
-        const header = Buffer.alloc(12);
-        const result = await handle.read(header, 0, header.length, 0);
-
-        await handle.close();
-        handle = null;
-
-        const actualMime = detectImageType(
-            header.subarray(0, result.bytesRead)
-        );
+        const actualMime = detectImageType(req.file.buffer);
 
         if (!actualMime || actualMime !== req.file.mimetype) {
             const error = new Error(
@@ -69,21 +62,11 @@ module.exports = async function validateImage(req, res, next) {
             error.code = "INVALID_IMAGE_CONTENT";
             error.status = 400;
 
-            await fs.promises.unlink(req.file.path).catch(() => {});
-            req.file = null;
-
             return next(error);
         }
 
         next();
     } catch (error) {
-        if (handle) await handle.close().catch(() => {});
-
-        if (req.file?.path) {
-            await fs.promises.unlink(req.file.path).catch(() => {});
-            req.file = null;
-        }
-
         next(error);
     }
 };

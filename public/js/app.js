@@ -1,4 +1,6 @@
-const API_URL = "/api";
+﻿const API_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+    ? "http://127.0.0.1:5000/api"
+    : "/api";
 const SERVER_URL = "";
 
 function getToken() {
@@ -114,7 +116,7 @@ function itemCard(item) {
             <p>${escapeHTML(item.category || "Uncategorised")}</p>
             <p class="item-meta">
                 ${escapeHTML(item.location || "Location unavailable")}
-                · ${escapeHTML(item.date ? new Date(item.date).toLocaleDateString() : "")}
+                Â· ${escapeHTML(item.date ? new Date(item.date).toLocaleDateString() : "")}
             </p>
             <p class="item-meta">Status: ${escapeHTML(item.status || "Active")}</p>
             <a class="btn btn-outline"
@@ -450,8 +452,8 @@ async function initItem() {
                 <span class="item-type">${escapeHTML(item.type)}</span>
                 <h1 class="page-title">${escapeHTML(item.title)}</h1>
                 <p class="muted">
-                    ${escapeHTML(item.category)} ·
-                    ${escapeHTML(item.location)} ·
+                    ${escapeHTML(item.category)} Â·
+                    ${escapeHTML(item.location)} Â·
                     ${escapeHTML(new Date(item.date).toLocaleDateString())}
                 </p>
                 <p>${escapeHTML(item.description)}</p>

@@ -15,7 +15,7 @@ exports.createItem = async (req, res, next) => {
 
     const item = await Item.create({
       title, category, description, location, date, type,
-      image: req.file ? `/uploads/${req.file.filename}` : "",
+      image: req.cloudinaryImage ? req.cloudinaryImage.secure_url : "",
       reportedBy: req.user._id
     });
 
